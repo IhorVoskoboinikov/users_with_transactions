@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+venv/
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+
+# dirs
+
+local_db/
