@@ -11,13 +11,6 @@ class Settings(BaseSettings):
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
 
-    REDIS_HOST: str
-    REDIS_PORT: int
-    REDIS_PASSWORD: str
-
-    SUPERUSER_USERNAME: str
-    SUPERUSER_PASSWORD: str
-
     @property
     def SQLALCHEMY_DATABASE_URL(self) -> str:
         return (
