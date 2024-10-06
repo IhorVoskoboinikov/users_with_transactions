@@ -20,8 +20,6 @@ Users with Transactions Service (CRUD application) is a web application for mana
 > 2. You can use all endpoints with CRUD operations
 > 3. Go to the url where our admin panel http://127.0.0.1:7000/admin
 
-(sdfsdfs)
-
 
 ![Website Interface](DEMO.PNG)
 ![Website Interface](DEMO_0.PNG)
