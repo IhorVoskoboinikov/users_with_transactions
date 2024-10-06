@@ -6,6 +6,7 @@ class TransactionAdmin(ModelView, model=UserTransaction):
     name = "Transaction"
     name_plural = "Transactions"
     list_template = "list_statistic.html"
+    column_searchable_list = ['user.user_name',]
 
     page_size = 5
 
