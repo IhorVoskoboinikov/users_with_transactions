@@ -1,25 +1,3 @@
-import os
-from dotenv import load_dotenv
-
-
-def get_env_data(name: str) -> str:
-    env_data = os.getenv(name)
-    if env_data is None:
-        load_dotenv()
-        env_data = os.getenv(name)
-    return env_data
-
-
-FAST_APP_HOST = get_env_data("FAST_APP_HOST")
-FAST_APP_PORT = int(get_env_data("FAST_APP_PORT"))
-
-POSTGRES_USER = get_env_data("POSTGRES_USER")
-POSTGRES_HOST = get_env_data("POSTGRES_HOST")
-POSTGRES_PORT = int(get_env_data("POSTGRES_PORT"))
-POSTGRES_PASSWORD = get_env_data("POSTGRES_PASSWORD")
-POSTGRES_DB = get_env_data("POSTGRES_DB")
-
-
 RESPONSES_USER = {
     200: {
         "description": "Success",
