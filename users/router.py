@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
+import openapi_responses
 from dependencies import get_db
 from users.schemas import UserCreate, UserUpdate
 from users.crud import (
@@ -12,12 +13,11 @@ from users.crud import (
     get_user_by_name
 )
 from logger import logger
-import config
 
 router = APIRouter()
 
 
-@router.post("/users", tags=["Users"], responses=config.RESPONSES_USER)
+@router.post("/users", tags=["Users"], responses=openapi_responses.RESPONSES_USER)
 async def add_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     logger.info("start.add_user...")
     db_user = await get_user_by_name(db=db, user_name=user.user_name)
@@ -27,7 +27,7 @@ async def add_user(user: UserCreate, db: AsyncSession = Depends(get_db)):
     return user
 
 
-@router.get("/users/{user_id}", tags=["Users"], responses=config.RESPONSES_USER)
+@router.get("/users/{user_id}", tags=["Users"], responses=openapi_responses.RESPONSES_USER)
 async def get_user(user_id: int, db: AsyncSession = Depends(get_db)):
     logger.info("start.get_user...")
     db_user = await get_user(db, user_id)
@@ -36,14 +36,14 @@ async def get_user(user_id: int, db: AsyncSession = Depends(get_db)):
     return db_user
 
 
-@router.get("/users", tags=["Users"], responses=config.RESPONSES_USER)
+@router.get("/users", tags=["Users"], responses=openapi_responses.RESPONSES_USER)
 async def read_all_users(db: AsyncSession = Depends(get_db)):
     logger.info("start.read_all_users...")
     users = await get_all_users(db)
     return users
 
 
-@router.put("/users/{user_id}", tags=["Users"], responses=config.RESPONSES_USER)
+@router.put("/users/{user_id}", tags=["Users"], responses=openapi_responses.RESPONSES_USER)
 async def update_existing_user(user_id: int, user_update: UserUpdate, db: AsyncSession = Depends(get_db)):
     logger.info("start.update_existing_user...")
 
@@ -60,7 +60,7 @@ async def update_existing_user(user_id: int, user_update: UserUpdate, db: AsyncS
     return await update_user(db=db, user_id=user_id, user_update=user_update)
 
 
-@router.delete("/users/{user_id}", tags=["Users"], responses=config.RESPONSES_USER)
+@router.delete("/users/{user_id}", tags=["Users"], responses=openapi_responses.RESPONSES_USER)
 async def remove_user(user_id: int, db: AsyncSession = Depends(get_db)):
     logger.info("start.remove_user...")
     db_user = await get_user(db=db, user_id=user_id)
