@@ -11,8 +11,11 @@ services:
 #      - .:/app
 #    depends_on:
 #      - postgres
+#      - redis
 #    environment:
 #      - PYTHONPATH=/app
+#    networks:
+#      my_network:
 #    command: uvicorn main:app --host 0.0.0.0 --port 8000
 
   postgres:
@@ -25,4 +28,18 @@ services:
       - "${POSTGRES_PORT}:5432"
     volumes:
       - ./local_db:/var/lib/postgresql/data:rw
+#    networks:
+#      my_network:
+#
+#  redis:
+#    image: redis
+#    ports:
+#      - "${REDIS_PORT}:6379"
+#    networks:
+#      - my_network
+#    command: >
+#      --requirepass ${REDIS_PASSWORD}
+#
+#networks:
+#  my_network:
 
