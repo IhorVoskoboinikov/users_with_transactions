@@ -25,6 +25,8 @@ services:
       - "${POSTGRES_PORT}:5432"
     volumes:
       - ./local_db:/var/lib/postgresql/data:rw
+    networks:
+      my_network:
 
 networks:
   my_network:

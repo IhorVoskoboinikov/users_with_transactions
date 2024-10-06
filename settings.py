@@ -26,12 +26,6 @@ class Settings(BaseSettings):
             f"{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
         )
 
-    @property
-    def REDIS_DATABASE_URL(self) -> str:
-        return (
-            f"redis://:{self.REDIS_PASSWORD}@{self.REDIS_HOST}:{self.REDIS_PORT}"
-        )
-
     class Config:
         env_file = ".env"
 
