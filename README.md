@@ -14,11 +14,13 @@ Users with Transactions Service (CRUD application) is a web application for mana
 3. Install Docker (Docker-compose), if it is not installed
 4. Run command ```docker-compose up``` 
 
-## Usage local:
+## Usage local (use PORT from .env.example):
 
 > 1. Go to the url where our documentation (swagger) was launched http://127.0.0.1:7000/docs
 > 2. You can use all endpoints with CRUD operations
 > 3. Go to the url where our admin panel http://127.0.0.1:7000/admin
+
+(sdfsdfs)
 
 
 ![Website Interface](DEMO.PNG)
