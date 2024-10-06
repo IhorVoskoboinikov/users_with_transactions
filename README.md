@@ -4,8 +4,8 @@ Users with Transactions Service (CRUD application) is a web application for mana
 
 ## Entities:
 
-2. Users
-3. Transactions
+1. Users
+2. Transactions
 
 ## Setup:
 
