@@ -1,14 +1,14 @@
 from typing import Optional
 
 from pydantic import BaseModel
-from datetime import date
+from datetime import datetime
 
 
 class TransactionBase(BaseModel):
     user_id: int
-    creation_date: Optional[date] = None
-    transaction_type: str
-    transaction_amount: float
+    creation_date: Optional[datetime] = None
+    type: str
+    amount: float
 
 
 class TransactionCreate(TransactionBase):
@@ -17,9 +17,9 @@ class TransactionCreate(TransactionBase):
 
 class TransactionUpdate(TransactionBase):
     user_id: Optional[int] = None
-    creation_date: Optional[date] = None
-    transaction_type: Optional[str] = None
-    transaction_amount: Optional[float] = None
+    creation_date: Optional[datetime] = None
+    type: Optional[str] = None
+    amount: Optional[float] = None
 
 
 class TransactionList(TransactionBase):
