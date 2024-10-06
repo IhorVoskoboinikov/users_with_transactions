@@ -11,6 +11,13 @@ class Settings(BaseSettings):
     POSTGRES_PASSWORD: str
     POSTGRES_DB: str
 
+    REDIS_HOST: str
+    REDIS_PORT: int
+    REDIS_PASSWORD: str
+
+    SUPERUSER_USERNAME: str
+    SUPERUSER_PASSWORD: str
+
     @property
     def SQLALCHEMY_DATABASE_URL(self) -> str:
         return (
@@ -19,10 +26,14 @@ class Settings(BaseSettings):
             f"{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
         )
 
+    @property
+    def REDIS_DATABASE_URL(self) -> str:
+        return (
+            f"redis://:{self.REDIS_PASSWORD}@{self.REDIS_HOST}:{self.REDIS_PORT}"
+        )
+
     class Config:
         env_file = ".env"
 
 
-# Инициализация настроек
 settings = Settings()
-
