@@ -11,13 +11,13 @@ Users with Transactions Service (CRUD application) is a web application for mana
 
 1. Clone the project: ```git clone https://github.com/IhorVoskoboinikov/users_with_transactions.git```
 2. Create .env file as .env.example (you can use test data from .env.example in .env)
-3. Install Docker (Docker-compose) if you didn't install
+3. Install Docker (Docker-compose), if it is not installed
 4. Run command ```docker-compose up``` 
 
 ## Usage local:
 
-> 1. Go to the url where our documentation (swagger) was launched http://127.0.0.1:7000
-> 2. You can use all CRUD operations with models User and Transactions:
+> 1. Go to the url where our documentation (swagger) was launched http://127.0.0.1:7000/docs
+> 2. You can use all endpoints with CRUD operations
 > 3. Go to the url where our admin panel http://127.0.0.1:7000/admin
 
 
