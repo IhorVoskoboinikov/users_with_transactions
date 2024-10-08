@@ -12,10 +12,6 @@ class UserCreate(UserBase):
     pass
 
 
-class UserUpdate(UserBase):
-    pass
-
-
 class UserList(UserBase):
     id: int
     transactions: List[TransactionList] = []
