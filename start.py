@@ -10,7 +10,9 @@ def wait_for_postgres():
     start_time = time.time()
     while time.time() - start_time < 60:
         try:
-            with socket.create_connection((settings.POSTGRES_HOST, settings.POSTGRES_PORT), timeout=5):
+            with socket.create_connection(
+                (settings.POSTGRES_HOST, settings.POSTGRES_PORT), timeout=5
+            ):
                 logger.info("PostgreSQL started")
                 return True
         except (socket.timeout, ConnectionRefusedError):
@@ -28,8 +30,8 @@ def run_command(command):
 
 def main():
     wait_for_postgres()
-    run_command('alembic upgrade head')
-    run_command('uvicorn main:app --host 0.0.0.0 --port 8000')
+    run_command("alembic upgrade head")
+    run_command("uvicorn main:app --host 0.0.0.0 --port 8000")
 
 
 if __name__ == "__main__":

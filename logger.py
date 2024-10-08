@@ -10,13 +10,11 @@ class JsonFormatter(Formatter):
 
     def format(self, record):
         level = record.levelname
-        log_time = datetime.fromtimestamp(record.created, tz=timezone.utc).strftime('%Y-%m-%d %H:%M:%S %Z')
+        log_time = datetime.fromtimestamp(record.created, tz=timezone.utc).strftime(
+            "%Y-%m-%d %H:%M:%S %Z"
+        )
 
-        log_message = {
-            "time": log_time,
-            "level": level,
-            "message": record.getMessage()
-        }
+        log_message = {"time": log_time, "level": level, "message": record.getMessage()}
 
         return json.dumps(log_message, ensure_ascii=False)
 

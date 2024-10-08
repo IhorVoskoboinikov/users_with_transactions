@@ -11,6 +11,8 @@ services:
       - PYTHONPATH=/app
     networks:
       my_network:
+    volumes:
+      - ./:/app
     command: python3 start.py
 
   postgres:
