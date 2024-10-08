@@ -1,8 +1,8 @@
-"""Init 1
+"""Init
 
-Revision ID: fa9ff60c7411
+Revision ID: 39f8bd263955
 Revises: 
-Create Date: 2024-10-01 20:11:51.605475
+Create Date: 2024-10-07 18:25:42.573682
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'fa9ff60c7411'
+revision: str = '39f8bd263955'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -23,14 +23,15 @@ def upgrade() -> None:
     op.create_table('users',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('user_name', sa.String(length=255), nullable=False),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('user_name')
     )
     op.create_index(op.f('ix_users_id'), 'users', ['id'], unique=False)
     op.create_table('transactions',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('create_at', sa.DateTime(), nullable=False),
-    sa.Column('type', sa.String(length=255), nullable=False),
+    sa.Column('transaction_type', sa.Enum('DEPOSIT', 'WITHDRAWAL', 'TRANSFER', name='transactiontype'), nullable=False),
     sa.Column('amount', sa.Float(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')

@@ -18,11 +18,12 @@ app = FastAPI(
     openapi_tags=[
         {
             "name": "Users",
-            "description": "CRUD operations with Users"
+            "description": "Operations with Users"
         },
         {
             "name": "Transactions",
-            "description": "CRUD operations with Transactions"
+            "description": "Operations with Transactions. "
+                           "Available transaction types: 'deposit', 'withdrawal', 'transfer'"
         }
     ]
 )
